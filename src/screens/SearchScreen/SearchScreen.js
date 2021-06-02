@@ -105,11 +105,10 @@ const SearchScreen = ({navigation}) => {
                 />
               </TouchableOpacity>
               <TextInput
-                placeholder="Search here"
+                placeholder="Search here with link"
                 placeholderTextColor="#707070"
                 style={styles.TextInput}
                 onChangeText={(val) => {
-                  console.log(val);
                   Store.input = val;
                 }}
               />

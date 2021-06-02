@@ -1,32 +1,23 @@
 import React, {useState, useEffect} from 'react';
-import {
-  View,
-  Text,
-  FlatList,
-  TouchableOpacity,
-  Image,
-  TouchableNativeFeedback,
-  Linking,
-  Button,
-} from 'react-native';
+import {View, Text} from 'react-native';
 import Axios from 'axios';
-import Store from './Store'
+import Store from './Store';
+import Config from 'react-native-config'
 
 export default InfoScreen = (props) => {
-  const [News, setNews] = useState([]);
   useEffect(() => {
     Axios({
       method: 'post',
-      url: 'https://try-001-with-gitub.herokuapp.com/related',
+      url: Config.PREDICT_API,
       data: {
         link: Store.input,
       },
     })
       .then((res) => {
-        console.log('dcv',res);
+        console.log('dcv', res);
       })
       .catch((err) => {
-        console.log('awee',err);
+        console.log('awee', err);
       });
   }, []);
   return (

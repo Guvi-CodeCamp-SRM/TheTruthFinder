@@ -11,14 +11,16 @@ import Store from '../Store';
 import Axios from 'axios';
 import style from './ResultStyles';
 import LoadingScreen from '../Loader/LoadingScreen';
+import Config from 'react-native-config'
 
 export default ResultScreen = (props) => {
   console.log(Store.val);
   const [isLoading, setIsLoading] = useState(true);
   useEffect(() => {
+    console.log(Config.RESULT_API,Store.input);
     Axios({
       method: 'post',
-      url: 'https://try-001-with-gitub.herokuapp.com/predict',
+      url:Config.RESULT_API,
       data: {
         link: Store.input,
       },
@@ -29,7 +31,7 @@ export default ResultScreen = (props) => {
         setIsLoading(false);
       })
       .catch((err) => {
-        console.log(err);
+        console.log('err',err);
       });
   }, []);
 
